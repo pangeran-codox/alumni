@@ -1,58 +1,473 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# 🎓 Alumni Management System
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+> Sistem pendataan alumni sekolah berbasis Laravel dan Filament yang dirancang untuk mengelola data alumni secara terstruktur, sederhana, dan mudah dikembangkan.
 
-## About Laravel
+[![Laravel](https://img.shields.io/badge/Laravel-13.x-FF2D20?style=flat-square&logo=laravel&logoColor=white)](https://laravel.com/)
+[![PHP](https://img.shields.io/badge/PHP-8.3%2B-777BB4?style=flat-square&logo=php&logoColor=white)](https://www.php.net/)
+[![Filament](https://img.shields.io/badge/Filament-4.x-FDAE4B?style=flat-square)](https://filamentphp.com/)
+[![License](https://img.shields.io/badge/license-MIT-green?style=flat-square)](LICENSE)
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+---
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## 📌 About
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+**Alumni Management System** adalah aplikasi web untuk membantu sekolah mengelola dan mendata alumni dalam satu sistem terpusat.
 
-## Learning Laravel
+Project ini dibuat dengan pendekatan **modular monolith** menggunakan Laravel. Admin panel dibangun menggunakan Filament, sementara halaman publik menggunakan Blade.
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+Fokus utama project:
 
-In addition, [Laracasts](https://laracasts.com) contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+- Pengelolaan data alumni
+- Pengelolaan angkatan
+- Penyajian data alumni
+- Struktur aplikasi yang sederhana dan mudah dipelihara
+- Fondasi yang dapat dikembangkan sesuai kebutuhan sekolah
 
-You can also watch bite-sized lessons with real-world projects on [Laravel Learn](https://laravel.com/learn), where you will be guided through building a Laravel application from scratch while learning PHP fundamentals.
+> Project ini sengaja tidak menggunakan microservices atau infrastructure tambahan pada tahap awal. Kompleksitas hanya akan ditambahkan jika kebutuhan produk memang membutuhkannya.
 
-## Agentic Development
+---
 
-Laravel's predictable structure and conventions make it ideal for AI coding agents like Claude Code, Cursor, and GitHub Copilot. Install [Laravel Boost](https://laravel.com/docs/ai) to supercharge your AI workflow:
+## ✨ Current Features
 
-```bash
-composer require laravel/boost --dev
+### 👨‍🎓 Alumni
 
-php artisan boost:install
+- Pengelolaan data alumni
+- Resource CRUD alumni melalui Filament
+- Halaman daftar alumni
+- Model dan relasi alumni
+- Struktur data yang siap dikembangkan untuk proses verifikasi
+
+### 🏫 Angkatan
+
+- Pengelolaan data angkatan
+- Resource CRUD angkatan melalui Filament
+- Relasi angkatan dengan data alumni
+
+### 🛠️ Admin Panel
+
+Menggunakan **Filament** sebagai fondasi administration panel.
+
+Admin panel menyediakan struktur untuk:
+
+- Alumni Resource
+- Angkatan Resource
+- Form management
+- Table management
+- Filtering
+- Dashboard/Widgets
+
+### 🌐 Public Website
+
+Halaman publik menggunakan Laravel Blade dan controller khusus:
+
+```text
+PublicAlumniController
 ```
 
-Boost provides your agent 15+ tools and skills that help agents build Laravel applications while following best practices.
+Halaman publik saat ini memiliki fondasi untuk menampilkan data alumni tanpa mencampurkan kebutuhan public-facing UI dengan admin panel.
 
-## Contributing
+---
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+## 🧱 Tech Stack
 
-## Code of Conduct
+| Technology | Purpose |
+|---|---|
+| **Laravel** | Web application framework |
+| **PHP** | Backend programming language |
+| **Filament** | Admin panel & resource management |
+| **Blade** | Server-side rendered public UI |
+| **Eloquent ORM** | Database interaction |
+| **Vite** | Frontend asset development |
+| **Tailwind CSS** | UI styling |
+| **PostgreSQL / MySQL** | Relational database |
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+### Infrastructure Philosophy
 
-## Security Vulnerabilities
+Versi awal project sengaja dibuat sederhana.
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+Tidak ada kebutuhan awal untuk:
 
-## License
+- ❌ Redis
+- ❌ Queue worker
+- ❌ Microservices
+- ❌ Go service
+- ❌ Rust service
+- ❌ gRPC
+- ❌ API gateway
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+Satu aplikasi Laravel sudah cukup untuk kebutuhan sistem saat ini.
+
+---
+
+## 🏗️ Architecture
+
+Project menggunakan pendekatan **modular monolith**.
+
+```text
+                         ┌──────────────────────┐
+                         │       Browser        │
+                         └──────────┬───────────┘
+                                    │
+                                    ▼
+                         ┌──────────────────────┐
+                         │       Laravel        │
+                         │                      │
+                         │  ┌────────────────┐  │
+                         │  │ Public Website │  │
+                         │  └────────────────┘  │
+                         │                      │
+                         │  ┌────────────────┐  │
+                         │  │ Filament Admin │  │
+                         │  └────────────────┘  │
+                         │                      │
+                         │  ┌────────────────┐  │
+                         │  │ Eloquent ORM   │  │
+                         │  └────────────────┘  │
+                         └──────────┬───────────┘
+                                    │
+                                    ▼
+                         ┌──────────────────────┐
+                         │      Database        │
+                         └──────────────────────┘
+```
+
+### Why Modular Monolith?
+
+Karena sistem pendataan alumni tidak membutuhkan distribusi service sejak awal.
+
+Keuntungannya:
+
+- Deployment lebih sederhana
+- Debugging lebih mudah
+- Development lebih cepat
+- Database transaction lebih mudah dikelola
+- Maintenance lebih ringan
+- Infrastruktur lebih murah
+- Lebih sedikit failure points
+
+---
+
+## 📂 Project Structure
+
+Struktur utama project:
+
+```text
+app/
+├── Filament/
+│   ├── Pages/
+│   ├── Resources/
+│   │   ├── AlumniResource.php
+│   │   ├── AlumniResource/
+│   │   │   └── Pages/
+│   │   ├── AngkatanResource.php
+│   │   └── AngkatanResource/
+│   │       └── Pages/
+│   └── Widgets/
+│
+├── Http/
+│   └── Controllers/
+│       ├── Controller.php
+│       └── PublicAlumniController.php
+│
+├── Models/
+│   ├── Alumni.php
+│   ├── Angkatan.php
+│   └── User.php
+│
+├── Policies/
+├── Providers/
+│   ├── AppServiceProvider.php
+│   └── Filament/
+│       └── AdminPanelProvider.php
+│
+└── Services/
+
+database/
+├── factories/
+├── migrations/
+└── seeders/
+
+resources/
+├── css/
+├── js/
+└── views/
+    ├── alumni/
+    └── welcome.blade.php
+
+routes/
+└── web.php
+
+docs/
+├── ARCHITECTURE.md
+├── CONTRIBUTING.md
+├── DATABASE.md
+├── PRD.md
+├── PROJECT_SCOPE.md
+├── ROADMAP.md
+└── SECURITY.md
+```
+
+---
+
+## 🗃️ Core Domain
+
+Saat ini domain utama terdiri dari:
+
+```text
+User
+ │
+ └── Alumni
+
+Angkatan
+ │
+ └── Alumni
+```
+
+### Alumni
+
+Merepresentasikan data individu alumni.
+
+Contoh informasi:
+
+- Nama
+- Kontak
+- Tahun masuk
+- Tahun lulus
+- Angkatan
+- Pendidikan
+- Pekerjaan
+- Domisili
+- Informasi lain yang dibutuhkan sekolah
+
+### Angkatan
+
+Merepresentasikan kelompok alumni berdasarkan tahun atau kategori kelulusan.
+
+---
+
+## 🚀 Getting Started
+
+### Requirements
+
+Pastikan environment memiliki:
+
+- PHP
+- Composer
+- Node.js & npm
+- Database server
+- Git
+
+### 1. Clone Repository
+
+```bash
+git clone https://github.com/pangeran-codex/alumni.git
+cd alumni
+```
+
+### 2. Install PHP Dependencies
+
+```bash
+composer install
+```
+
+### 3. Install Frontend Dependencies
+
+```bash
+npm install
+```
+
+### 4. Environment
+
+Copy file environment:
+
+```bash
+cp .env.example .env
+```
+
+Windows PowerShell:
+
+```powershell
+Copy-Item .env.example .env
+```
+
+Kemudian konfigurasi database pada `.env`.
+
+### 5. Generate Application Key
+
+```bash
+php artisan key:generate
+```
+
+### 6. Run Migration
+
+```bash
+php artisan migrate
+```
+
+### 7. Build Frontend Assets
+
+Untuk development:
+
+```bash
+npm run dev
+```
+
+Untuk production:
+
+```bash
+npm run build
+```
+
+### 8. Run Laravel
+
+```bash
+php artisan serve
+```
+
+Aplikasi dapat diakses melalui:
+
+```text
+http://127.0.0.1:8000
+```
+
+---
+
+## 🧪 Testing
+
+Test suite menggunakan PHPUnit melalui Laravel.
+
+Jalankan:
+
+```bash
+php artisan test
+```
+
+Atau:
+
+```bash
+./vendor/bin/phpunit
+```
+
+Testing akan dikembangkan seiring bertambahnya fitur dan business rules.
+
+---
+
+## 🛣️ Roadmap
+
+### Phase 1 — Foundation
+
+- [x] Laravel project
+- [x] Filament admin panel
+- [x] Alumni model
+- [x] Angkatan model
+- [x] Alumni Resource
+- [x] Angkatan Resource
+- [x] Database migrations
+- [x] Public alumni controller
+- [x] Project documentation
+
+### Phase 2 — Alumni Management
+
+- [ ] Penyempurnaan profil alumni
+- [ ] Authentication alumni
+- [ ] Alumni dapat memperbarui profil
+- [ ] Validasi data
+- [ ] Authorization
+- [ ] Status verifikasi
+
+### Phase 3 — Management & Reporting
+
+- [ ] Search alumni
+- [ ] Filter alumni
+- [ ] Dashboard statistics
+- [ ] Export data
+- [ ] Import data
+- [ ] Audit trail
+
+### Phase 4 — Public Experience
+
+- [ ] Public alumni directory
+- [ ] Alumni profile
+- [ ] Privacy controls
+- [ ] Penyempurnaan UI/UX
+
+### Future
+
+Fitur berikut tidak menjadi bagian dari MVP:
+
+- Alumni networking
+- Event alumni
+- Job board
+- Messaging
+- Mobile application
+- Public API
+- Integrasi dengan sistem eksternal
+
+---
+
+## 🔐 Security
+
+Security menjadi bagian dari desain sejak awal.
+
+Prinsip utama:
+
+- Password menggunakan hashing Laravel
+- Validasi dilakukan di server
+- Authorization diterapkan pada operasi yang membutuhkan permission
+- Upload file harus divalidasi
+- Data pribadi tidak ditampilkan secara publik tanpa kebutuhan
+- Export data dibatasi berdasarkan hak akses
+- Production menggunakan HTTPS
+
+Dokumentasi security:
+
+[`docs/SECURITY.md`](docs/SECURITY.md)
+
+---
+
+## 📚 Documentation
+
+Dokumentasi project tersedia di folder [`docs`](docs/).
+
+| Document | Description |
+|---|---|
+| [`PRD.md`](docs/PRD.md) | Product requirements |
+| [`ARCHITECTURE.md`](docs/ARCHITECTURE.md) | Application architecture |
+| [`DATABASE.md`](docs/DATABASE.md) | Database design |
+| [`SECURITY.md`](docs/SECURITY.md) | Security guidelines |
+| [`ROADMAP.md`](docs/ROADMAP.md) | Development roadmap |
+| [`PROJECT_SCOPE.md`](docs/PROJECT_SCOPE.md) | Project boundaries |
+| [`CONTRIBUTING.md`](docs/CONTRIBUTING.md) | Contribution guidelines |
+
+---
+
+## 🧭 Development Philosophy
+
+Project ini mengikuti prinsip:
+
+> **Simple until complexity is justified.**
+
+Artinya:
+
+- Jangan membuat abstraction sebelum diperlukan.
+- Jangan menambahkan service hanya karena "arsitektur yang bagus".
+- Jangan menggunakan infrastructure yang belum dibutuhkan.
+- Jangan melakukan premature optimization.
+- Utamakan code yang mudah dibaca dan dipelihara.
+- Tambahkan kompleksitas berdasarkan requirement dan hasil pengukuran.
+
+Tujuannya bukan membuat sistem yang paling rumit.
+
+Tujuannya membuat sistem yang **cukup kuat untuk kebutuhannya dan tetap mudah dikembangkan**.
+
+---
+
+## 📄 License
+
+This project is licensed under the [MIT License](LICENSE).
+
+---
+
+<p align="center">
+  Built with ❤️ using Laravel & Filament
+</p>
