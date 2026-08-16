@@ -15,11 +15,16 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // User::factory(10)->create();
-
+        // Akun admin untuk login ke /admin (email: admin@alumni.test, password: password)
         User::factory()->create([
-            'name' => 'Test User',
-            'email' => 'test@example.com',
+            'name' => 'Admin Sekolah',
+            'email' => 'admin@alumni.test',
+            'role' => User::ROLE_SUPER_ADMIN,
+        ]);
+
+        $this->call([
+            AngkatanSeeder::class,
+            AlumniSeeder::class,
         ]);
     }
 }

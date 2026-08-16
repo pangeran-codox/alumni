@@ -1,0 +1,42 @@
+name: alumni
+
+services:
+  app:
+    image: ${DOCKER_IMAGE:?set DOCKER_IMAGE, e.g. yourusername/alumni:1.0.0}
+    container_name: alumni_app
+    restart: unless-stopped
+    env_file:
+      - .env
+    volumes:
+      # Volume kosong ini otomatis diisi Docker dari isi public/ bawaan image
+      # saat pertama kali dibuat (perilaku standar Docker untuk named volume
+      # yang di-mount ke path yang sudah ada isinya di image).
+      - public_assets:/var/www/html/public
+      - storage_data:/var/www/html/storage
+    networks:
+      - network
+
+  nginx:
+    image: nginx:1.27-alpine
+    container_name: alumni_nginx
+    restart: unless-stopped
+    depends_on:
+      - app
+    ports:
+      - "${NGINX_PORT:-8085}:80"
+    volumes:
+      - public_assets:/var/www/html/public:ro
+      - ./docker/nginx/default.conf:/etc/nginx/conf.d/default.conf:ro
+    networks:
+      - network
+
+volumes:
+  public_assets:
+    name: alumni_public_assets
+  storage_data:
+    name: alumni_storage_data
+
+networks:
+  network:
+    name: network
+    external: true

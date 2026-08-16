@@ -55,10 +55,19 @@ class PublicAlumniController extends Controller
             ->orderBy('jurusan')
             ->pluck('jurusan');
 
+        $angkatanBreakdown = Angkatan::query()
+            ->withCount(['alumni' => fn ($q) => $q->where('status_verifikasi', Alumni::STATUS_VERIFIED)])
+            ->orderByDesc('tahun')
+            ->limit(6)
+            ->get()
+            ->sortBy('tahun')
+            ->values();
+
         return view('alumni.index', [
             'alumni' => $alumni,
             'tahunLulusOptions' => $tahunLulusOptions,
             'jurusanOptions' => $jurusanOptions,
+            'angkatanBreakdown' => $angkatanBreakdown,
             'totalTerverifikasi' => Alumni::where('status_verifikasi', Alumni::STATUS_VERIFIED)->count(),
             'totalAngkatan' => Angkatan::count(),
             'totalKota' => Alumni::where('status_verifikasi', Alumni::STATUS_VERIFIED)

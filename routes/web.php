@@ -1,8 +1,6 @@
 <?php
 
+use App\Http\Controllers\PublicAlumniController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('alumni.index');
-})->name('alumni.index');
-
+Route::get('/', [PublicAlumniController::class, 'index'])->name('alumni.index');
